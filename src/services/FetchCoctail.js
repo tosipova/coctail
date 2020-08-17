@@ -1,6 +1,9 @@
-export default function fetchCoctail(query) {
+const BASE_API_URL = 'https://thecocktaildb.com/api/json/v1/1/';
 
-    const fullApiUrl = 'https://thecocktaildb.com/api/json/v1/1/search.php?s=' + query;
+export function fetchCoctail(query) {
+
+    // TODO: convert into string template
+    const fullApiUrl = BASE_API_URL + 'search.php?s=' + query;
 
     return fetch(fullApiUrl)
         .then(response => response.json())
@@ -8,9 +11,11 @@ export default function fetchCoctail(query) {
             return results.drinks;
         })
 }
+
 export function fetchCoctailRandom() {
 
-    const fullApiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+    // TODO: convert into string template
+    const fullApiUrl = BASE_API_URL + 'random.php';
 
     return fetch(fullApiUrl)
         .then(response => response.json())

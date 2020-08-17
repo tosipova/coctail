@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import fetchCoctail, { fetchCoctailRandom } from './services/FetchCoctail';
+import { fetchCoctail, fetchCoctailRandom } from './services/fetchCoctail';
+
 
 function App() {
-
   const [results, setResults] = useState([])
   const [query, setQuery] = useState('')
 
@@ -17,6 +17,7 @@ function App() {
   }
   const onSubmitLucky = (event) => {
     event.preventDefault();
+
     fetchCoctailRandom(query).then(
       coctailResults => {
         setResults(coctailResults);
@@ -27,6 +28,7 @@ function App() {
   const onChange = event => {
     setQuery(event.target.value)
   }
+
   return (
     <div className="App">
       {/* <SearchCoctail onSubmit={onSubmit} query={query} onChange={onChange} onSubmitLucky={onSubmitLucky}/> */}
@@ -44,8 +46,8 @@ function SearchCoctail({ onSubmit, query, onChange, onSubmitLucky }) {
         value={query}
         onChange={onChange}
       />
-      <button onClick={onSubmit}> Search</button>
-      <button onClick={onSubmitLucky}> I am lucky!</button>
+      <button onClick={onSubmit} className="btn btn-primary">Search</button>
+      <button onClick={onSubmitLucky} className="btn btn-secondary"> I am lucky!</button>
     </form>
   )
 }
@@ -57,7 +59,7 @@ function ResultCoctail({ results }) {
     return null;
   }
   const listMarkUp = results.map((drink) =>
-    <div>
+    <div key={drink.strDrink}>
       <div>{drink.strDrink}:</div>
       <div>{drink.strInstructions}</div>
     </div>
