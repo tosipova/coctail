@@ -4,10 +4,13 @@
 			"path": ".."
 		},
 		{
-			"path": "../../React-weather-app"
+			"path": "../../newproject"
+		},
+		{
+			"path": "../../photo-search-app"
+		},
+		{
+			"path": "../../photo-search-react-app"
 		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "React-weather-app"
-	}
+	]
 }
